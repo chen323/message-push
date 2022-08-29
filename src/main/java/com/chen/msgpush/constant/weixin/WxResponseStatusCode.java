@@ -5,9 +5,7 @@ import lombok.ToString;
 
 /**
  * 微信返回值状态码
- *
- * @author wayne
- * @version WxResponseStatusCode,  2020/11/24
+ * @author chen
  */
 @Getter
 @ToString

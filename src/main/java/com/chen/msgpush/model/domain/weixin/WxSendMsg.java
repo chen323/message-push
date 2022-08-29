@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Created by arden.chen on 2020/12/25/025.
+ * @author chen
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

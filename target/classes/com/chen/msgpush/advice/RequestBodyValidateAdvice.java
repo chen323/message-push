@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by rachel.ran on 2019-11-28.
+ * @author chen
  */
 @Slf4j
 @ControllerAdvice(basePackages = "com.chen.msgpush.controller")

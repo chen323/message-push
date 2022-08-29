@@ -28,6 +28,7 @@
         <fastjson.version>1.2.47</fastjson.version>
         <maven.jar.plugin.version>2.3</maven.jar.plugin.version>
         <commons-io.version>2.4</commons-io.version>
+        <com.google.guava>19.0-rc2</com.google.guava>
     </properties>
 
     <dependencies>
@@ -144,6 +145,12 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${com.google.guava}</version>
         </dependency>
 
     </dependencies>

@@ -24,7 +24,6 @@ import java.util.Map;
 
 /**
  * 统一处理controller类抛出的ApiBussException异常，转换成标准json输出格式信息
- * Created by jackie.yu on 2017/7/27.
  * 参考 springboot Error Handling
  * 
  * @author chen

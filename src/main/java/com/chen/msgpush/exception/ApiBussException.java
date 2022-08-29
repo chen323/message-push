@@ -9,8 +9,6 @@ import lombok.EqualsAndHashCode;
  * 所有service的异常通过该类抛出来，AOP层捕捉进行业务处理后返回
  *
  * @author chen
- * @version 1.0
- * @since 2015/10/8
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

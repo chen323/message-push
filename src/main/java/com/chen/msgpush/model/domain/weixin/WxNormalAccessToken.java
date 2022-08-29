@@ -4,8 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @author wayne
- * @version WxNormalAccessToken,  2020/11/28
+ * @author chen
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author chen
- * @version RedisUtil,  2019-07-23 14:21
  */
 
 @Slf4j

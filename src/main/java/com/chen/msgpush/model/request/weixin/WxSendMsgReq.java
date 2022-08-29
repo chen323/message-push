@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Map;
 
 /**
- * Created by arden.chen on 2020/12/25/025.
+ * @author chen
  */
 @Data
 public class WxSendMsgReq {

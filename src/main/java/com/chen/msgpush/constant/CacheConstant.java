@@ -4,7 +4,6 @@ package com.chen.msgpush.constant;
  * 缓存相关常量。
  *
  * @author chen
- * @since 2019/10/9
  */
 public class CacheConstant {
 
