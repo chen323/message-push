@@ -47,15 +47,6 @@ public abstract class BaseWeiXinService {
     private static final String NORMAL_ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s";
     
     private static final String SEND_MSG_URL = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s";
-    
-    /**
-     * 强制获取代理对象，必须开启exposeProxy配置，否则获取不到当前代理对象
-     *
-     * @return 微信基础service对象
-     */
-    private BaseWeiXinService getWeixinService() {
-        return (BaseWeiXinService) AopContext.currentProxy();
-    }
 
     /**
      * 根据appid, secret, code获取accesstoken
