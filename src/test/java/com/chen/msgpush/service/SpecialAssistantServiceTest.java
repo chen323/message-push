@@ -44,7 +44,8 @@ public class SpecialAssistantServiceTest {
         data.put("temp", buildDetail("30摄氏度", "#173177"));
         data.put("wind_dir", buildDetail("3级", "#173177"));
         data.put("love_day", buildDetail("50", "#173177"));
-        data.put("birthday", buildDetail("2020-01-01", "#173177"));
+        data.put("birthday1", buildDetail("2020-01-01", "#173177"));
+        data.put("note", buildDetail("这是一条消息", "#173177"));
         wxSendMsgReq.setData(data);
         WxSendMsg wxSendMsg = specialAssistantService.postMsgSend(wxSendMsgReq);
         log.info("res ==> {}", wxSendMsg);

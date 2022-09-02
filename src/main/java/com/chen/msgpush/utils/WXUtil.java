@@ -4,7 +4,9 @@ package com.chen.msgpush.utils;
 import com.chen.msgpush.constant.ResponseStatusCode;
 import com.chen.msgpush.constant.weixin.WXPayConstants;
 import com.chen.msgpush.exception.ApiBussException;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Node;
@@ -12,6 +14,7 @@ import org.w3c.dom.NodeList;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -19,6 +22,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
@@ -35,6 +39,30 @@ public class WXUtil {
     private static final String SYMBOLS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     private static final Random RANDOM = new SecureRandom();
+
+    public static Map<String, String> getEventParamMap(HttpServletRequest request){
+        try {
+            InputStream inputStream = request.getInputStream();
+            ByteArrayOutputStream outSteam = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputStream.read(buffer)) != -1) {
+                outSteam.write(buffer, 0, length);
+            }
+            outSteam.close();
+            inputStream.close();
+
+            // 获取微信调用我们url的返回信息
+            String resultXml = outSteam.toString(CharEncoding.UTF_8);
+            log.info("notify xml :{}", resultXml);
+
+            return xmlToMap(resultXml);
+        }catch (Exception e){
+            log.error("parse weixin event param error", e);
+            return Maps.newHashMap();
+        }
+    }
+
 
     /**
      * XML格式字符串转换为Map
