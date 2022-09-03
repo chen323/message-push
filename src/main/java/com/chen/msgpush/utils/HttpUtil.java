@@ -122,6 +122,7 @@ public class HttpUtil {
             serverUrl = this.getServerUrl(serverUrl, null);
             log.info("调用第三方接口serverUrl={}", serverUrl);
             String getReturnValue = restTemplate.getForObject(serverUrl, String.class);
+            log.info("调用接口响应：{}", getReturnValue);
             // 执行耗时
             log.info("调用第三方接口耗时 : {} ms", System.currentTimeMillis() - startTime);
             return getReturnValue;

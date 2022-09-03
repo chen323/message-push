@@ -1,0 +1,1 @@
+sh bin/myapp start
