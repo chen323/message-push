@@ -52,6 +52,9 @@ public class MessagePushJob {
     @Value("${message.push.job.enable}")
     private Boolean enable;
 
+    //保存前5天发送过的消息id，保证五天不重复
+    private List<Integer> messageIds = new ArrayList<>();
+
     @Scheduled(cron = "${message.push.job}")
     public void execute(){
         if (!enable){
@@ -95,8 +98,16 @@ public class MessagePushJob {
         String note;
         if (!CollectionUtils.isEmpty(messages)) {
             Random random = new Random();
-            int num = random.nextInt(messages.size());
-            Message message = messages.get(num);
+            Message message;
+            do {
+                int num = random.nextInt(messages.size());
+                message = messages.get(num);
+            }while (messageIds.contains(message.getId()));
+            //删除最早一天，将最新id添加到最后
+            if (messageIds.size() == 5) {
+                messageIds.remove(0);
+            }
+            messageIds.add(message.getId());
             note = message.getContent();
         }else {
             note = "哎呀，对你说的话好像空了呢，别着急，是没有配置啦，快喊你的猪去配置吧";
